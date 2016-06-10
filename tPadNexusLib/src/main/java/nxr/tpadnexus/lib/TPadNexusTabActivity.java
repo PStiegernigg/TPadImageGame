@@ -97,7 +97,13 @@ public abstract class TPadNexusTabActivity extends IOIOTabActivity {
 	}
 
 	public void setFreq(int i) {
+
 		TPadFreq = i;
+	}
+
+	public int getFreq () {
+
+		return  TPadFreq;
 	}
 
 	public void sendTPad(float f) {

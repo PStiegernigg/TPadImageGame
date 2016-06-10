@@ -116,6 +116,10 @@ public abstract class TPadNexusActivity extends IOIOActivity {
 		TPadFreq = i;
 	}
 
+	public int getFreq() {
+		return TPadFreq;
+	}
+
 	public void sendTPad(float f) {
 		synchronized (tpadValueBuffer) {
 			textureOn = false;

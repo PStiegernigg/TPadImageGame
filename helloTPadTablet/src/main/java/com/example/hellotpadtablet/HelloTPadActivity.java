@@ -10,6 +10,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class HelloTPadActivity extends TPadNexusActivity {
 
@@ -18,6 +20,34 @@ public class HelloTPadActivity extends TPadNexusActivity {
 	View timeView;
 	FrictionMapView fricView;
 	DepthMapView depthView;
+	SeekBar freqSeekBar;
+	TextView freqView;
+
+	int minFreq = 10000;
+
+	private SeekBar.OnSeekBarChangeListener frequencySeekBarListener =
+			new SeekBar.OnSeekBarChangeListener() {
+				@Override
+				public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+					if(progress >= minFreq) {
+						setFreq(progress);
+					}
+					else {
+						setFreq(minFreq);
+						seekBar.setProgress(minFreq);
+					}
+
+					freqView.setText(String.valueOf(new Integer(getFreq())));
+
+				}
+
+				@Override
+				public void onStartTrackingTouch(SeekBar seekBar) {}
+
+				@Override
+				public void onStopTrackingTouch(SeekBar seekBar) {}
+			};
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +58,15 @@ public class HelloTPadActivity extends TPadNexusActivity {
 
 		// Initialize the TPad to the correct driving frequency
 		setFreq(42400);
+
+		//Initalize frequency text view
+		freqView = (TextView) findViewById(R.id.freqText);
+		freqView.setText(String.valueOf(new Integer(getFreq())));
+
+		//Initialize frequency slider
+		freqSeekBar = (SeekBar) findViewById(R.id.seekBar);
+		freqSeekBar.setOnSeekBarChangeListener(frequencySeekBarListener);
+
 
 		// Link the first 'View' called basicView to the view with the id=view1
 		basicView = (View) findViewById(R.id.view1);
