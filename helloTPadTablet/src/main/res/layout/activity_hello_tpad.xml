@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,15 +10,17 @@
     tools:context=".HelloTPadActivity" >
 
     <LinearLayout
+        android:id="@+id/llSeekBar"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="35dp">
 
         <SeekBar
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/seekBar"
             android:max="50000"
+            android:progress="42400"
             android:layout_weight="1.14" />
 
         <TextView
@@ -29,7 +31,7 @@
             android:id="@+id/freqText" />
     </LinearLayout>
 
-    <View
+    <!-- <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
@@ -41,12 +43,192 @@
     <nxr.tpadnexus.lib.views.FrictionMapView
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp" /> -->
     
     <nxr.tpadnexus.lib.views.DepthMapView
-        android:id="@+id/view4"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:id="@+id/touchView"
+        android:layout_alignParentBottom="true"
+        android:layout_width="600dp"
+        android:layout_height="400dp" />
+
+    <RelativeLayout
+        android:id="@+id/rlCover"
+        android:layout_alignParentBottom="true"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:visibility="invisible"
+        android:background="#ff000000">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlAnswers"
+        android:layout_alignParentBottom="true"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:visibility="invisible"
+        android:background="#ff000000"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnAnswer1"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:text="@string/answer_1"
+            android:onClick="checkAnswer1"/>
+        <Button
+            android:id="@+id/btnAnswer2"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@id/btnAnswer1"
+            android:text="@string/answer_2"
+            android:onClick="checkAnswer2"/>
+        <Button
+            android:id="@+id/btnAnswer3"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/btnAnswer1"
+            android:layout_alignLeft="@id/btnAnswer1"
+            android:text="@string/answer_3"
+            android:onClick="checkAnswer3"/>
+        <Button
+            android:id="@+id/btnAnswer4"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/btnAnswer2"
+            android:layout_alignLeft="@id/btnAnswer2"
+            android:text="@string/answer_4"
+            android:onClick="checkAnswer4"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlCounter"
+        android:layout_width="100dp"
+        android:layout_height="400dp"
+        android:layout_alignTop="@id/touchView"
+        android:layout_toEndOf="@id/touchView"
+        android:background="#ff000000"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/tvTimerLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/time_remaining" />
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tvTimerLabel"
+            android:gravity="center"
+            android:textSize="70sp" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/next"
+            android:visibility="invisible"
+            android:textSize="25sp"
+            android:onClick="newRound" />
+
+        <TextView
+            android:id="@+id/tvCounter"
+            android:textSize="70sp"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/tvCounterLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvCounter"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="@string/correct" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlButtons"
+        android:background="#ff000000"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/touchView"
+        android:layout_below="@id/llSeekBar"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="400dp" >
+
+        <Button
+            android:id="@+id/btnTriangle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/triangle"
+            android:textSize="25sp"
+            android:onClick="loadTriangle" />
+
+        <Button
+            android:id="@+id/btnCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnTriangle"
+            android:text="@string/circle"
+            android:textSize="25sp"
+            android:onClick="loadCircle" />
+
+        <Button
+            android:id="@+id/btnSquare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnCircle"
+            android:text="@string/square"
+            android:textSize="25sp"
+            android:onClick="loadSquare" />
+
+        <Button
+            android:id="@+id/btnHalfCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnSquare"
+            android:text="@string/half_circle"
+            android:textSize="25sp"
+            android:onClick="loadHalfCircle" />
+
+        <Button
+            android:id="@+id/btnGemStone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnHalfCircle"
+            android:text="@string/gem_stone"
+            android:textSize="25sp"
+            android:onClick="loadGemStone" />
+
+        <Button
+            android:id="@+id/btnClover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnGemStone"
+            android:text="@string/clover"
+            android:textSize="25sp"
+            android:onClick="loadClover" />
+
+        <Button
+            android:id="@+id/btnStar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnClover"
+            android:text="@string/star"
+            android:textSize="25sp"
+            android:onClick="loadStar" />
+
+    </RelativeLayout>
     
 
-</LinearLayout>
+</RelativeLayout>

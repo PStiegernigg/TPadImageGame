@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">HelloTPadTablet</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">TPad Tablet Game</string>
+    <string name="app_name2">TPad Game</string>
+    <string name="new_game">New Game</string>
+    <string name="explore">Explore</string>
+    <string name="triangle">Triangle</string>
+    <string name="circle">Circle</string>
+    <string name="square">Square</string>
+    <string name="half_circle">Half Circle</string>
+    <string name="gem_stone">Gem Stone</string>
+    <string name="clover">Clover</string>
+    <string name="time_remaining">Time remaining:</string>
+    <string name="answer_1">Answer 1</string>
+    <string name="answer_2">Answer 2</string>
+    <string name="answer_3">Answer 3</string>
+    <string name="answer_4">Answer 4</string>
+    <string name="next">Next</string>
+    <string name="correct">Correct</string>
+    <string name="star">Star</string>
 
 </resources>
