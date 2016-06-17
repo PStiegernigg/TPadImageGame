@@ -94,6 +94,18 @@ public class HelloTPadActivity extends TPadNexusActivity {
         }
     };
 
+    private class LoadBitmapButtonListener implements View.OnClickListener {
+        String bitmapName;
+        public LoadBitmapButtonListener(String name) {
+            this.bitmapName = name;
+        }
+
+        @Override
+        public void onClick(View v) {
+           loadBitmap(bitmapName);
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +144,27 @@ public class HelloTPadActivity extends TPadNexusActivity {
         answBtnTwo.setOnClickListener(new AnswerButtonListener(1));
         answBtnThree.setOnClickListener(new AnswerButtonListener(2));
         answBtnFour.setOnClickListener(new AnswerButtonListener(3));
+
+        ((Button) findViewById(R.id.btnTriangle)).setOnClickListener(
+                new LoadBitmapButtonListener("triangle"));
+
+        ((Button) findViewById(R.id.btnCircle)).setOnClickListener(
+                new LoadBitmapButtonListener("circle"));
+
+        ((Button) findViewById(R.id.btnSquare)).setOnClickListener(
+                new LoadBitmapButtonListener("square"));
+
+        ((Button) findViewById(R.id.btnHalfCircle)).setOnClickListener(
+                new LoadBitmapButtonListener("half_circle"));
+
+        ((Button) findViewById(R.id.btnGemStone)).setOnClickListener(
+                new LoadBitmapButtonListener("gemstone"));
+
+        ((Button) findViewById(R.id.btnStar)).setOnClickListener(
+                new LoadBitmapButtonListener("star"));
+
+        ((Button) findViewById(R.id.btnClover)).setOnClickListener(
+                new LoadBitmapButtonListener("clover"));
 
         answersLayout = (RelativeLayout) findViewById(R.id.rlAnswers);
         answers_orig.add(0, "Dummy");
@@ -339,35 +372,6 @@ public class HelloTPadActivity extends TPadNexusActivity {
                 break;
         }
         return choice;
-    }
-
-    public void loadTriangle(View view) {
-        loadBitmap("triangle");
-    }
-
-    public void loadCircle(View view) {
-        loadBitmap("circle");
-    }
-
-    public void loadSquare(View view) {
-        loadBitmap("square");
-    }
-
-    public void loadHalfCircle(View view) {
-        loadBitmap("half_circle");
-    }
-
-
-    public void loadGemStone(View view) {
-        loadBitmap("gemstone");
-    }
-
-    public void loadStar(View view) {
-        loadBitmap("star");
-    }
-
-    public void loadClover(View view) {
-        loadBitmap("clover");
     }
 
     public void loadBitmap(String bitmapName) {

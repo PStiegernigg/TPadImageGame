@@ -167,8 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:text="@string/triangle"
-            android:textSize="25sp"
-            android:onClick="loadTriangle" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnCircle"
@@ -176,8 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnTriangle"
             android:text="@string/circle"
-            android:textSize="25sp"
-            android:onClick="loadCircle" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnSquare"
@@ -185,8 +183,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnCircle"
             android:text="@string/square"
-            android:textSize="25sp"
-            android:onClick="loadSquare" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnHalfCircle"
@@ -194,8 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnSquare"
             android:text="@string/half_circle"
-            android:textSize="25sp"
-            android:onClick="loadHalfCircle" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnGemStone"
@@ -203,8 +199,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnHalfCircle"
             android:text="@string/gem_stone"
-            android:textSize="25sp"
-            android:onClick="loadGemStone" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnClover"
@@ -212,8 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnGemStone"
             android:text="@string/clover"
-            android:textSize="25sp"
-            android:onClick="loadClover" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnStar"
@@ -221,8 +215,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnClover"
             android:text="@string/star"
-            android:textSize="25sp"
-            android:onClick="loadStar" />
+            android:textSize="25sp" />
 
     </RelativeLayout>
     
