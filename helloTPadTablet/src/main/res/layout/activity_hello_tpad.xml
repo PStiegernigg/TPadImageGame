@@ -73,30 +73,27 @@
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:text="@string/answer_1"
-            android:onClick="checkAnswer1"/>
+            android:layout_alignParentStart="true" />
         <Button
             android:id="@+id/btnAnswer2"
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:layout_toEndOf="@id/btnAnswer1"
-            android:text="@string/answer_2"
-            android:onClick="checkAnswer2"/>
+            android:text="@string/answer_2" />
         <Button
             android:id="@+id/btnAnswer3"
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:layout_below="@id/btnAnswer1"
             android:layout_alignLeft="@id/btnAnswer1"
-            android:text="@string/answer_3"
-            android:onClick="checkAnswer3"/>
+            android:text="@string/answer_3" />
         <Button
             android:id="@+id/btnAnswer4"
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:layout_below="@id/btnAnswer2"
             android:layout_alignLeft="@id/btnAnswer2"
-            android:text="@string/answer_4"
-            android:onClick="checkAnswer4"/>
+            android:text="@string/answer_4" />
     </RelativeLayout>
 
     <RelativeLayout

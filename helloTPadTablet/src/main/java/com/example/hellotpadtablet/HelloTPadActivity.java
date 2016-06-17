@@ -33,6 +33,11 @@ public class HelloTPadActivity extends TPadNexusActivity {
     TextView freqView;
     Bitmap defaultBitmap;
 
+    Button answBtnOne;
+    Button answBtnTwo;
+    Button answBtnThree;
+    Button answBtnFour;
+
     RelativeLayout buttonsLayout;
     RelativeLayout gameCounterLayout;
     RelativeLayout coverLayout;
@@ -73,6 +78,21 @@ public class HelloTPadActivity extends TPadNexusActivity {
                 }
             };
 
+    private class AnswerButtonListener implements View.OnClickListener {
+        int answerIndex;
+        public AnswerButtonListener(int index) {
+            this.answerIndex = index;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (rightAnswerIndex == this.answerIndex) {
+                gameCounter++;
+            }
+            afterAnswers();
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +121,16 @@ public class HelloTPadActivity extends TPadNexusActivity {
         tvGameCounter.setText(String.valueOf(gameCounter));
         tvTimer = (TextView) findViewById(R.id.tvTimer);
         tvTimer.setText(String.valueOf(gameTimer));
+
+        answBtnOne =  (Button) findViewById(R.id.btnAnswer1);
+        answBtnTwo =  (Button) findViewById(R.id.btnAnswer2);
+        answBtnThree =  (Button) findViewById(R.id.btnAnswer3);
+        answBtnFour =  (Button) findViewById(R.id.btnAnswer4);
+
+        answBtnOne.setOnClickListener(new AnswerButtonListener(0));
+        answBtnTwo.setOnClickListener(new AnswerButtonListener(1));
+        answBtnThree.setOnClickListener(new AnswerButtonListener(2));
+        answBtnFour.setOnClickListener(new AnswerButtonListener(3));
 
         answersLayout = (RelativeLayout) findViewById(R.id.rlAnswers);
         answers_orig.add(0, "Dummy");
@@ -237,7 +267,10 @@ public class HelloTPadActivity extends TPadNexusActivity {
 
         rightAnswerIndex = loadRandomObject();
         Log.w("NewRound", "current choice: " + rightAnswerIndex);
-        ArrayList<String> tmpAnswers = new ArrayList<String>(8);
+        ArrayList<String> tmpAnswers = new ArrayList<String>(8);if (rightAnswerIndex == 2) {
+            gameCounter++;
+        }
+        afterAnswers();
         tmpAnswers = (ArrayList<String>) answers_orig.clone();
         ArrayList<String> answersSelection = new ArrayList<String>(4);
 
@@ -255,10 +288,10 @@ public class HelloTPadActivity extends TPadNexusActivity {
         rightAnswerIndex = answersSelection.indexOf(rightAnswerString);
         Log.w("NewRound", "Right answer \"" + rightAnswerString + "\" index: " + rightAnswerIndex);
 
-        ((Button) findViewById(R.id.btnAnswer1)).setText(answersSelection.get(0));
-        ((Button) findViewById(R.id.btnAnswer2)).setText(answersSelection.get(1));
-        ((Button) findViewById(R.id.btnAnswer3)).setText(answersSelection.get(2));
-        ((Button) findViewById(R.id.btnAnswer4)).setText(answersSelection.get(3));
+        answBtnOne.setText(answersSelection.get(0));
+        answBtnTwo.setText(answersSelection.get(1));
+        answBtnThree.setText(answersSelection.get(2));
+        answBtnFour.setText(answersSelection.get(3));
 
         // http://stackoverflow.com/questions/6810416/android-countdowntimer-shows-1-for-two-seconds
         new CountDownTimer(timePerRound * 1000, 100) {
@@ -349,33 +382,5 @@ public class HelloTPadActivity extends TPadNexusActivity {
         tvGameCounter.setText(String.valueOf(gameCounter));
         answersLayout.setVisibility(View.INVISIBLE);
         coverLayout.setVisibility(View.INVISIBLE);
-    }
-
-    public void checkAnswer1(View view) {
-        if (rightAnswerIndex == 0) {
-            gameCounter++;
-        }
-        afterAnswers();
-    }
-
-    public void checkAnswer2(View view) {
-        if (rightAnswerIndex == 1) {
-            gameCounter++;
-        }
-        afterAnswers();
-    }
-
-    public void checkAnswer3(View view) {
-        if (rightAnswerIndex == 2) {
-            gameCounter++;
-        }
-        afterAnswers();
-    }
-
-    public void checkAnswer4(View view) {
-        if (rightAnswerIndex == 3) {
-            gameCounter++;
-        }
-        afterAnswers();
     }
 }
