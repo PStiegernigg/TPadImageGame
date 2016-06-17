@@ -4,7 +4,6 @@ import nxr.tpadnexus.lib.TPadNexusActivity;
 import nxr.tpadnexus.lib.views.BlackWhiteView;
 import nxr.tpadnexus.lib.views.DepthMapView;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,7 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -29,7 +27,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
 //	View basicView;
 //	View timeView;
 //	FrictionMapView fricView;
-    DepthMapView depthView;
+    BlackWhiteView blackWhiteView;
     SeekBar freqSeekBar;
     TextView freqView;
     Bitmap defaultBitmap;
@@ -50,6 +48,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
     int rightAnswerIndex = 0;
     String rightAnswerString;
     int minFreq = 10000;
+    int initFreq = 44500;
     boolean roundOngoing = false;
 
     private SeekBar.OnSeekBarChangeListener frequencySeekBarListener =
@@ -83,7 +82,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
         setContentView(R.layout.activity_hello_tpad);
 
         // Initialize the TPad to the correct driving frequency
-        setFreq(42400);
+        setFreq(initFreq);
 
         //Initalize frequency text view
         freqView = (TextView) findViewById(R.id.freqText);
@@ -92,6 +91,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
         //Initialize frequency slider
         freqSeekBar = (SeekBar) findViewById(R.id.seekBar);
         freqSeekBar.setOnSeekBarChangeListener(frequencySeekBarListener);
+        freqSeekBar.setProgress(getFreq());
 
         buttonsLayout = (RelativeLayout) findViewById(R.id.rlButtons);
         buttonsLayout.setVisibility(View.INVISIBLE);
@@ -189,15 +189,15 @@ public class HelloTPadActivity extends TPadNexusActivity {
 //		fricView.setDataBitmap(defaultBitmap);
 
         // Same process as for the friction view
-        depthView = (DepthMapView) findViewById(R.id.touchView);
+        blackWhiteView = (BlackWhiteView) findViewById(R.id.touchView);
         defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.triangle);
         setDepthViewBitmap(R.drawable.triangle);
-        depthView.setDataBitmap(defaultBitmap);
+        blackWhiteView.setDataBitmap(defaultBitmap);
     }
 
     private void setDepthViewBitmap(int picture) {
         defaultBitmap = BitmapFactory.decodeResource(getResources(), picture);
-        depthView.setDataBitmap(defaultBitmap);
+        blackWhiteView.setDataBitmap(defaultBitmap);
     }
 
     @Override
@@ -343,7 +343,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
     public void loadBitmap(String bitmapName) {
         int id = getResources().getIdentifier(bitmapName, "drawable", getPackageName());
         defaultBitmap = BitmapFactory.decodeResource(getResources(), id);
-        depthView.setDataBitmap(defaultBitmap);
+        blackWhiteView.setDataBitmap(defaultBitmap);
     }
 
     public void afterAnswers() {

@@ -8,6 +8,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -116,6 +117,9 @@ public class BlackWhiteView extends View {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 
+		Pair<Integer,Integer> coords;
+		int x, y;
+
 		if (openCvLoaded == false) {
 			return false;
 		}
@@ -125,22 +129,37 @@ public class BlackWhiteView extends View {
 		case MotionEvent.ACTION_DOWN:
 			px = event.getX() * scaleFactor;
 			py = event.getY() * scaleFactor;
-			pixelData = dataBitmap.getPixel((int)px, (int)py);
+
+			x = (int) px;
+			y = (int) py;
+			coords = checkCoordinates(x,y);
+			x = coords.first;
+			y = coords.second;
+
+			pixelData = dataBitmap.getPixel(x, y);
+
 			if (pixelData == -16777216) {
 				tpadActivity.sendTPad(0.0f);
 			} else {
-				tpadActivity.sendTPad(0.8f);
+				tpadActivity.sendTPad(1.0f);
 			}
 			break;
 
 		case MotionEvent.ACTION_MOVE:
 			px = event.getX() * scaleFactor;
 			py = event.getY() * scaleFactor;
-			pixelData = dataBitmap.getPixel((int)px, (int)py);
-			if (pixelData == -16777216) {
+
+			x = (int) px;
+			y = (int) py;
+			coords = checkCoordinates(x,y);
+			x = coords.first;
+			y = coords.second;
+
+			pixelData = dataBitmap.getPixel(x, y);
+			if (pixelData == -16777216) {	// if pixel-color is black
 				tpadActivity.sendTPad(0.0f);
 			} else {
-				tpadActivity.sendTPad(0.8f);
+				tpadActivity.sendTPad(1.0f);
 			}
 			break;
 
@@ -153,5 +172,21 @@ public class BlackWhiteView extends View {
 		}
 
 		return true;
+	}
+
+	public Pair<Integer,Integer> checkCoordinates(int x, int y) {
+
+		if (x >= dataBitmap.getWidth()) {
+			x = dataBitmap.getWidth() - 1;
+		} else if (x < 0) {
+			x = 0;
+		}
+
+		if (y >= dataBitmap.getHeight()) {
+			y = dataBitmap.getHeight() - 1;
+		} else if (y < 0) {
+			y = 0;
+		}
+		return new Pair<Integer, Integer>(x, y);
 	}
 }
