@@ -19,5 +19,6 @@
     <string name="next">Next</string>
     <string name="correct">Correct</string>
     <string name="star">Star</string>
+    <string name="answer">Answer</string>
 
 </resources>

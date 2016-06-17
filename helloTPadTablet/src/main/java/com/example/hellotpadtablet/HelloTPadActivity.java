@@ -277,6 +277,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
         switch (item.getItemId()) {
             case R.id.newGame:
                 gameCounter = 0;
+                tvGameCounter.setText(String.valueOf(gameCounter));
                 newRound();
                 return true;
 
@@ -296,6 +297,15 @@ public class HelloTPadActivity extends TPadNexusActivity {
     public void newRound(View view) {
         (findViewById(R.id.btnNext)).setVisibility(View.INVISIBLE);
         newRound();
+    }
+
+    public void answerEarly(View view) {
+        timer.cancel();
+//        tvTimer.setText("0");
+        answersLayout.setVisibility(View.VISIBLE);
+        coverLayout.setVisibility(View.INVISIBLE);
+        (findViewById(R.id.btnNext)).setVisibility(View.VISIBLE);
+        (findViewById(R.id.btnAnswer)).setVisibility(View.INVISIBLE);
     }
 
     public void newRound() {
@@ -345,10 +355,11 @@ public class HelloTPadActivity extends TPadNexusActivity {
                 answersLayout.setVisibility(View.VISIBLE);
                 coverLayout.setVisibility(View.INVISIBLE);
                 (findViewById(R.id.btnNext)).setVisibility(View.VISIBLE);
+                (findViewById(R.id.btnAnswer)).setVisibility(View.INVISIBLE);
             }
         };
-
         timer.start();
+        (findViewById(R.id.btnAnswer)).setVisibility(View.VISIBLE);
     }
 
     public int loadRandomObject() {
