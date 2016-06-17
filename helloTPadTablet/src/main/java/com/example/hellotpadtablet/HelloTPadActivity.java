@@ -49,7 +49,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
 
     int gameCounter = 0;
     int gameTimer = 15;
-    int timePerRound = 15;
+    int timePerRound = 30;
     int rightAnswerIndex = 0;
     String rightAnswerString;
     int minFreq = 10000;
