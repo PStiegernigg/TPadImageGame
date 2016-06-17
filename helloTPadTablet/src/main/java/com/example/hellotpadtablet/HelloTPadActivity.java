@@ -47,6 +47,8 @@ public class HelloTPadActivity extends TPadNexusActivity {
 
     ArrayList<String> answers_orig = new ArrayList<String>(8);
 
+    CountDownTimer timer;
+
     int gameCounter = 0;
     int gameTimer = 15;
     int timePerRound = 30;
@@ -279,6 +281,9 @@ public class HelloTPadActivity extends TPadNexusActivity {
                 return true;
 
             case R.id.explore:
+                if(timer != null) {
+                    timer.cancel();
+                }
                 coverLayout.setVisibility(View.INVISIBLE);
                 gameCounterLayout.setVisibility(View.INVISIBLE);
                 buttonsLayout.setVisibility(View.VISIBLE);
@@ -325,7 +330,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
         answBtnFour.setText(answersSelection.get(3));
 
         // http://stackoverflow.com/questions/6810416/android-countdowntimer-shows-1-for-two-seconds
-        new CountDownTimer(timePerRound * 1000, 100) {
+        timer = new CountDownTimer(timePerRound * 1000, 100) {
             int secondsLeft = 0;
 
             public void onTick(long millisUntilFinished) {
@@ -341,7 +346,9 @@ public class HelloTPadActivity extends TPadNexusActivity {
                 coverLayout.setVisibility(View.INVISIBLE);
                 (findViewById(R.id.btnNext)).setVisibility(View.VISIBLE);
             }
-        }.start();
+        };
+
+        timer.start();
     }
 
     public int loadRandomObject() {
