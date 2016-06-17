@@ -1,6 +1,7 @@
 package com.example.hellotpadtablet;
 
 import nxr.tpadnexus.lib.TPadNexusActivity;
+import nxr.tpadnexus.lib.views.BlackWhiteView;
 import nxr.tpadnexus.lib.views.DepthMapView;
 
 import android.os.Bundle;
