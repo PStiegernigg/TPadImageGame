@@ -4,6 +4,7 @@ import nxr.tpadnexus.lib.TPadNexusActivity;
 import nxr.tpadnexus.lib.views.BlackWhiteView;
 import nxr.tpadnexus.lib.views.DepthMapView;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -285,90 +287,62 @@ public class HelloTPadActivity extends TPadNexusActivity {
 
         switch (choice) {
             case 1:
-                loadTriangle();
+                loadBitmap("triangle");
                 break;
             case 2:
-                loadCircle();
+                loadBitmap("circle");
                 break;
             case 3:
-                loadSquare();
+                loadBitmap("square");
                 break;
             case 4:
-                loadHalfCircle();
+                loadBitmap("half_circle");
                 break;
             case 5:
-                loadGemStone();
+                loadBitmap("gemstone");
                 break;
             case 6:
-                loadStar();
+                loadBitmap("star");
                 break;
             case 7:
-                loadClover();
+                loadBitmap("clover");
                 break;
         }
         return choice;
     }
 
     public void loadTriangle(View view) {
-        loadTriangle();
+        loadBitmap("triangle");
     }
 
     public void loadCircle(View view) {
-        loadCircle();
+        loadBitmap("circle");
     }
 
     public void loadSquare(View view) {
-        loadSquare();
+        loadBitmap("square");
     }
 
     public void loadHalfCircle(View view) {
-        loadHalfCircle();
+        loadBitmap("half_circle");
     }
 
+
     public void loadGemStone(View view) {
-        loadGemStone();
+        loadBitmap("gemstone");
     }
 
     public void loadStar(View view) {
-        loadStar();
+        loadBitmap("star");
     }
 
     public void loadClover(View view) {
-        loadClover();
+        loadBitmap("clover");
     }
 
-    public void loadTriangle() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.triangle);
-        depthView.setDataBitmap(defaultBitmap);
-    }
-
-    public void loadCircle() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.circle);
-        depthView.setDataBitmap(defaultBitmap);
-    }
-
-    public void loadSquare() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.square);
-        depthView.setDataBitmap(defaultBitmap);
-    }
-
-    public void loadHalfCircle() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.half_circle);
-        depthView.setDataBitmap(defaultBitmap);
-    }
-
-    public void loadGemStone() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gemstone);
-        depthView.setDataBitmap(defaultBitmap);
-    }
-
-    public void loadStar() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.star);
-        depthView.setDataBitmap(defaultBitmap);
-    }
-
-    public void loadClover() {
-        defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.clover);
+    public void loadBitmap(String bitmapName) {
+        int id = getResources().getIdentifier(bitmapName, "drawable", getPackageName());
+        defaultBitmap = BitmapFactory.decodeResource(getResources(), id);
         depthView.setDataBitmap(defaultBitmap);
     }
 
