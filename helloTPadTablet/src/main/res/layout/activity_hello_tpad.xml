@@ -72,8 +72,7 @@
             android:id="@+id/btnAnswer1"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:text="@string/answer_1"
-            android:layout_alignParentStart="true" />
+            android:text="@string/answer_1" />
         <Button
             android:id="@+id/btnAnswer2"
             android:layout_width="200dp"

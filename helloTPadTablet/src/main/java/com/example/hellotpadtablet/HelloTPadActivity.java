@@ -267,10 +267,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
 
         rightAnswerIndex = loadRandomObject();
         Log.w("NewRound", "current choice: " + rightAnswerIndex);
-        ArrayList<String> tmpAnswers = new ArrayList<String>(8);if (rightAnswerIndex == 2) {
-            gameCounter++;
-        }
-        afterAnswers();
+        ArrayList<String> tmpAnswers = new ArrayList<String>(8);
         tmpAnswers = (ArrayList<String>) answers_orig.clone();
         ArrayList<String> answersSelection = new ArrayList<String>(4);
 
