@@ -61,12 +61,20 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="200dp" /> -->
-    
-    <nxr.tpadnexus.lib.views.BlackWhiteView
-        android:id="@+id/touchView"
+
+    <RelativeLayout
+        android:id="@+id/touchViewBorder"
+        android:layout_width="610dp"
+        android:layout_height="410dp"
+        android:background="#d3d3d3"
         android:layout_alignParentBottom="true"
-        android:layout_width="600dp"
-        android:layout_height="400dp" />
+        android:gravity="center" >
+        <nxr.tpadnexus.lib.views.BlackWhiteView
+            android:id="@+id/touchView"
+            android:layout_alignParentBottom="true"
+            android:layout_width="600dp"
+            android:layout_height="400dp" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rlCover"
@@ -116,8 +124,8 @@
         android:id="@+id/rlCounter"
         android:layout_width="100dp"
         android:layout_height="400dp"
-        android:layout_alignTop="@id/touchView"
-        android:layout_toEndOf="@id/touchView"
+        android:layout_alignTop="@id/touchViewBorder"
+        android:layout_toEndOf="@id/touchViewBorder"
         android:background="#ff000000"
         android:visibility="invisible">
 
@@ -181,7 +189,7 @@
         android:id="@+id/rlButtons"
         android:background="#ff000000"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@id/touchView"
+        android:layout_alignTop="@id/touchViewBorder"
         android:layout_below="@id/llSeekBar"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
