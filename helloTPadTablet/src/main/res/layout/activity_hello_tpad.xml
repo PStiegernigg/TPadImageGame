@@ -15,6 +15,24 @@
         android:layout_width="match_parent"
         android:layout_height="35dp">
 
+        <Button
+            android:id="@+id/btnNewGame"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="@string/new_game" />
+
+        <Button
+            android:id="@+id/btnExplore"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="@string/explore" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/frequency"/>
+
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

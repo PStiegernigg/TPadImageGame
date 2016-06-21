@@ -32,6 +32,8 @@ public class HelloTPadActivity extends TPadNexusActivity {
     TextView freqView;
     Bitmap defaultBitmap;
 
+    Button btnNewGame;
+    Button btnExplore;
     Button answBtnOne;
     Button answBtnTwo;
     Button answBtnThree;
@@ -107,7 +109,6 @@ public class HelloTPadActivity extends TPadNexusActivity {
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +137,29 @@ public class HelloTPadActivity extends TPadNexusActivity {
         tvGameCounter.setText(String.valueOf(gameCounter));
         tvTimer = (TextView) findViewById(R.id.tvTimer);
         tvTimer.setText(String.valueOf(gameTimer));
+
+        btnNewGame = (Button) findViewById(R.id.btnNewGame);
+        btnNewGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameCounter = 0;
+                tvGameCounter.setText(String.valueOf(gameCounter));
+                newRound();
+            }
+        });
+
+        btnExplore = (Button) findViewById(R.id.btnExplore);
+        btnExplore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(timer != null) {
+                    timer.cancel();
+                }
+                coverLayout.setVisibility(View.INVISIBLE);
+                gameCounterLayout.setVisibility(View.INVISIBLE);
+                buttonsLayout.setVisibility(View.VISIBLE);
+            }
+        });
 
         answBtnOne =  (Button) findViewById(R.id.btnAnswer1);
         answBtnTwo =  (Button) findViewById(R.id.btnAnswer2);
@@ -265,34 +289,34 @@ public class HelloTPadActivity extends TPadNexusActivity {
         blackWhiteView.setDataBitmap(defaultBitmap);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.hello_tpad_menu, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        super.onCreateOptionsMenu(menu);
+//        getMenuInflater().inflate(R.menu.hello_tpad_menu, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.newGame:
-                gameCounter = 0;
-                tvGameCounter.setText(String.valueOf(gameCounter));
-                newRound();
-                return true;
-
-            case R.id.explore:
-                if(timer != null) {
-                    timer.cancel();
-                }
-                coverLayout.setVisibility(View.INVISIBLE);
-                gameCounterLayout.setVisibility(View.INVISIBLE);
-                buttonsLayout.setVisibility(View.VISIBLE);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.newGame:
+//                gameCounter = 0;
+//                tvGameCounter.setText(String.valueOf(gameCounter));
+//                newRound();
+//                return true;
+//
+//            case R.id.explore:
+//                if(timer != null) {
+//                    timer.cancel();
+//                }
+//                coverLayout.setVisibility(View.INVISIBLE);
+//                gameCounterLayout.setVisibility(View.INVISIBLE);
+//                buttonsLayout.setVisibility(View.VISIBLE);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     public void newRound(View view) {
         (findViewById(R.id.btnNext)).setVisibility(View.INVISIBLE);
