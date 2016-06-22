@@ -129,7 +129,6 @@ public class HelloTPadActivity extends TPadNexusActivity {
         freqSeekBar.setProgress(getFreq());
 
         buttonsLayout = (RelativeLayout) findViewById(R.id.rlButtons);
-        buttonsLayout.setVisibility(View.INVISIBLE);
 
         gameCounterLayout = (RelativeLayout) findViewById(R.id.rlCounter);
         coverLayout = (RelativeLayout) findViewById(R.id.rlCover);
@@ -158,6 +157,7 @@ public class HelloTPadActivity extends TPadNexusActivity {
                 coverLayout.setVisibility(View.INVISIBLE);
                 gameCounterLayout.setVisibility(View.INVISIBLE);
                 buttonsLayout.setVisibility(View.VISIBLE);
+                loadBitmap("triangle");
             }
         });
 

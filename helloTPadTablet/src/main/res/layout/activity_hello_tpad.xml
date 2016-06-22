@@ -31,6 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
             android:text="@string/frequency"/>
 
         <SeekBar
@@ -44,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingStart="5dp"
             android:text="Medium Text"
             android:id="@+id/freqText" />
     </LinearLayout>
@@ -69,55 +72,56 @@
         android:background="#d3d3d3"
         android:layout_alignParentBottom="true"
         android:gravity="center" >
+
         <nxr.tpadnexus.lib.views.BlackWhiteView
             android:id="@+id/touchView"
             android:layout_alignParentBottom="true"
             android:layout_width="600dp"
             android:layout_height="400dp" />
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlCover"
-        android:layout_alignParentBottom="true"
-        android:layout_width="600dp"
-        android:layout_height="400dp"
-        android:visibility="invisible"
-        android:background="#ff000000">
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlCover"
+            android:layout_alignParentBottom="true"
+            android:layout_width="600dp"
+            android:layout_height="400dp"
+            android:visibility="invisible"
+            android:background="#ff000000">
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlAnswers"
-        android:layout_alignParentBottom="true"
-        android:layout_width="600dp"
-        android:layout_height="400dp"
-        android:visibility="invisible"
-        android:background="#ff000000"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btnAnswer1"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:text="@string/answer_1" />
-        <Button
-            android:id="@+id/btnAnswer2"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_toEndOf="@id/btnAnswer1"
-            android:text="@string/answer_2" />
-        <Button
-            android:id="@+id/btnAnswer3"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/btnAnswer1"
-            android:layout_alignLeft="@id/btnAnswer1"
-            android:text="@string/answer_3" />
-        <Button
-            android:id="@+id/btnAnswer4"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/btnAnswer2"
-            android:layout_alignLeft="@id/btnAnswer2"
-            android:text="@string/answer_4" />
+        <RelativeLayout
+            android:id="@+id/rlAnswers"
+            android:layout_alignParentBottom="true"
+            android:layout_width="600dp"
+            android:layout_height="400dp"
+            android:visibility="invisible"
+            android:background="#ff000000"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnAnswer1"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:text="@string/answer_1" />
+            <Button
+                android:id="@+id/btnAnswer2"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_toEndOf="@id/btnAnswer1"
+                android:text="@string/answer_2" />
+            <Button
+                android:id="@+id/btnAnswer3"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/btnAnswer1"
+                android:layout_alignLeft="@id/btnAnswer1"
+                android:text="@string/answer_3" />
+            <Button
+                android:id="@+id/btnAnswer4"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/btnAnswer2"
+                android:layout_alignLeft="@id/btnAnswer2"
+                android:text="@string/answer_4" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
