@@ -1,2 +1,2 @@
 include ':tPadNexusLib'
-include ':helloTPadTablet'
+include ':TPadTabletGame'

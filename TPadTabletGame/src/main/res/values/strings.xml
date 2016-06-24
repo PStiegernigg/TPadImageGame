@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TPad Tablet Game</string>
+    <string name="app_name">TPad Game</string>
     <string name="app_name2">TPad Game</string>
     <string name="new_game">New Game</string>
     <string name="explore">Explore</string>

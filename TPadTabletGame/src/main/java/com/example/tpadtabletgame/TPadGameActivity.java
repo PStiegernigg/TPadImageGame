@@ -1,16 +1,13 @@
-package com.example.hellotpadtablet;
+package com.example.tpadtabletgame;
 
 import nxr.tpadnexus.lib.TPadNexusActivity;
 import nxr.tpadnexus.lib.views.BlackWhiteView;
-import nxr.tpadnexus.lib.views.DepthMapView;
 
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -21,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class HelloTPadActivity extends TPadNexusActivity {
+public class TPadGameActivity extends TPadNexusActivity {
 
     // Define 'View' classes that will link to the .xml file
 //	View basicView;
